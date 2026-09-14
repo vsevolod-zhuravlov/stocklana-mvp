@@ -1,0 +1,39 @@
+{
+  "name": "Stocklana — the wallet that talks back",
+  "short_name": "Stocklana",
+  "description": "A voice-first Solana wallet you can use with your eyes closed.",
+  "start_url": "/app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#05070c",
+  "theme_color": "#05070c",
+  "categories": ["finance", "accessibility"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Talk to my wallet",
+      "short_name": "Talk",
+      "url": "/app"
+    }
+  ]
+}

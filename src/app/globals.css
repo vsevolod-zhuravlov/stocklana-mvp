@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink-950: #05070c;
+  --color-ink-900: #0a0e17;
+  --color-ink-850: #111726;
+  --color-ink-800: #172033;
+  --color-ink-700: #24304a;
+  --color-ink-600: #3a4a6b;
+
+  --color-mist-400: #97a6c4;
+  --color-mist-200: #cfd8ea;
+  --color-mist-50: #f4f7fd;
+
+  --color-accent-400: #7cc6ff;
+  --color-accent-500: #38a3f1;
+  --color-accent-600: #1b7fd0;
+
+  --color-signal-400: #57e3a8;
+  --color-signal-600: #109c6a;
+
+  --color-warn-400: #ffb454;
+  --color-danger-400: #ff7a7a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-mist-50);
+  -webkit-font-smoothing: antialiased;
+  /* Stops iOS zooming when the push-to-talk button is tapped twice quickly. */
+  touch-action: manipulation;
+}
+
+/* Every interactive element must show a focus ring: keyboard and switch-control
+   users navigate this app without ever seeing a pointer. */
+:focus-visible {
+  outline: 3px solid var(--color-accent-400);
+  outline-offset: 3px;
+  border-radius: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* `sr-only` and `not-sr-only` come from Tailwind. Do not redefine `.sr-only`
+   here: an unlayered rule outranks Tailwind's layered utilities, which would
+   stop `focus:not-sr-only` revealing the skip link. */
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+.listening-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 3px solid var(--color-danger-400);
+  animation: pulse-ring 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
